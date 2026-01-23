@@ -22,7 +22,7 @@ const App = () => {
     <Router>
       <ScrollToTop/>
       <Cursor />
-      <SmoothScroll />
+      {/* <SmoothScroll /> */}
       <Navbar />
 
       <Routes>
@@ -34,7 +34,7 @@ const App = () => {
         <Route path="/learn" element={<Learn />} />
         <Route path="/listing" element={<Listing />} />
         <Route path="/payment" element={<Payment />} />
-        <Route path="/signin" element={<SingIn />} />
+        {/* <Route path="/signin" element={<SingIn />} /> */}
       </Routes>
 
       <Footer />

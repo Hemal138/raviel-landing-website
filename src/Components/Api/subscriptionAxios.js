@@ -1,0 +1,23 @@
+import axios from "axios";
+
+const subscriptionAxios = axios.create({
+  baseURL: import.meta.env.VITE_BACKEND_URL,
+  timeout: 10000,
+  headers: {
+    "ngrok-skip-browser-warning": "true",
+  },
+});
+
+// 🔐 Attach token if exists
+subscriptionAxios.interceptors.request.use(
+  (config) => {
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+export default subscriptionAxios;
