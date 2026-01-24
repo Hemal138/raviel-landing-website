@@ -1,115 +1,158 @@
-import { Box, Button, Typography } from '@mui/material'
-import React from 'react'
-import herosectionvideo from "../../assets/images/home/herovideo.mp4"
-import FlagCircleIcon from '@mui/icons-material/FlagCircle';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { Box, Typography, Button } from "@mui/material";
+import raviellandingherovideo from "../../assets/images/home/herovideo.mp4";
 
 const HeroSection = () => {
-  const navigate = useNavigate()
   return (
-    <>
+    <Box
+      sx={{
+        width: "100%",
+        minHeight: { xs: "auto", md: "80vh" },
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        px: { xs: 2, sm: 4, md: 10 },
+        py: { xs: 6, md: 0 },
+      }}
+    >
+      {/* CONTENT WRAPPER */}
       <Box
         sx={{
-          mx: { xs: 2, sm: 4, md: 8, lg: 12 },
-          height: { xs: "auto", md: "85vh" },
-          fontFamily: "stack",
-          display: "flex",
-          flexDirection: "column",
-          gap: { xs: 4, md: 4 },
+          width: "100%",
+          maxWidth: {
+            xs: "100%",
+            sm: "720px",
+            md: "960px",
+            lg: "1200px",
+            xl: "1400px",
+          },
+          textAlign: { xs: "center", md: "left" },
         }}
       >
-
-        {/* ================= Text Section ================= */}
-        <Box sx={{ textAlign: "center", pt: { xs: 3, md: 4 } }}>
-          
-          <Typography
-            sx={{
-              fontSize: { xs: "32px", sm: "40px", md: "55px", lg: "65px" },
-              fontFamily: "beardeys",
-              mb: 2,
-              lineHeight: 1.2,
-            }}
-          >
-            Powering Your Business with Smart Digital Solutions
-          </Typography>
-
-          <Typography
-            sx={{
-              fontSize: { xs: "16px", sm: "18px", md: "22px" },
-              maxWidth: "950px",
-              mx: "auto",
-              mb: 2,
-            }}
-          >
-            We deliver reliable, scalable, and modern services designed
-            to accelerate your business growth.
-          </Typography>
-
-          {/* ================= Button ================= */}
-          <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <Button
-            onClick={() => navigate("/payment")}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: "12px",
-                px: { xs: 2, md: 2.5 },
-                py: { xs: 1, md: 1.2 },
-                borderRadius: "999px",
-                background: "#ffffff",
-                color: "#000",
-                boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
-                textTransform: "none",
-                '&:hover': { background: "#f5f5f5" },
-              }}
-            >
-              <Box
-                sx={{
-                  width: { xs: 36, md: 42 },
-                  height: { xs: 36, md: 42 },
-                  borderRadius: "50%",
-                  background: "#D9F2FF",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <FlagCircleIcon />
-              </Box>
-
-              <Typography sx={{ fontSize: { xs: "14px", md: "16px" }, fontWeight: 600 }}>
-                Start now
-              </Typography>
-            </Button>
-          </Box>
-        </Box>
-
-        {/* ================= Video Section ================= */}
+        {/* LINE 1 */}
         <Box
           sx={{
-            height: { xs: "220px", sm: "320px", md: "70%" },
-            borderRadius: { xs: "24px", md: "50px" },
-            overflow: "hidden",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: { xs: "center", md: "flex-start" },
+            gap: { xs: 1, sm: 2 },
+            flexWrap: { xs: "wrap", md: "nowrap" },
           }}
         >
-          <video
-            src={herosectionvideo}
+          <Typography
+            component="span"
+            sx={{
+              fontFamily: "beardeys",
+              fontWeight: 800,
+              fontSize: {
+                xs: "2rem",
+                sm: "2.8rem",
+                md: "4.2rem",
+                lg: "5rem",
+              },
+              lineHeight: 1.1,
+            }}
+          >
+            Powering
+          </Typography>
+
+          {/* VIDEO — hide on mobile */}
+          <Box
+            component="video"
+            src={raviellandingherovideo}
             autoPlay
             loop
             muted
             playsInline
-            style={{
-              width: "100%",
-              height: "100%",
-              // objectFit: "cover",
-              backgroundColor:"#010000"
+            sx={{
+              display: { xs: "none", sm: "block" },
+              height: {
+                sm: "40px",
+                md: "60px",
+                lg: "70px",
+              },
+              minWidth: {
+                sm: "90px",
+                md: "120px",
+              },
+              borderRadius: "14px",
+              objectFit: "cover",
+              flexShrink: 0,
             }}
           />
+
+          <Typography
+            component="span"
+            sx={{
+              fontFamily: "beardeys",
+              fontWeight: 800,
+              fontSize: {
+                xs: "2rem",
+                sm: "2.8rem",
+                md: "4.2rem",
+                lg: "5rem",
+              },
+              lineHeight: 1.1,
+            }}
+          >
+            Your Business
+          </Typography>
         </Box>
 
-      </Box>
-    </>
-  )
-}
+        {/* LINE 2 */}
+        <Typography
+          sx={{
+            fontFamily: "beardeys",
+            fontWeight: 800,
+            mt: 1,
+            fontSize: {
+              xs: "1.8rem",
+              sm: "2.5rem",
+              md: "4.2rem",
+              lg: "5rem",
+            },
+            lineHeight: 1.1,
+          }}
+        >
+          with Smart Digital Solutions
+        </Typography>
 
-export default HeroSection
+        {/* DESCRIPTION */}
+        <Typography
+          sx={{
+            color: "#444",
+            fontSize: { xs: "1rem", sm: "1.15rem", md: "1.5rem" },
+            mt: 3,
+            mb: 4,
+            maxWidth: "900px",
+            mx: { xs: "auto", md: 0 },
+          }}
+        >
+          We deliver reliable, scalable, and modern services designed to
+          accelerate your business growth.
+        </Typography>
+
+        {/* CTA */}
+        <Button
+          sx={{
+            bgcolor: "#B9A6FF",
+            color: "#000",
+            px: { xs: 3, md: 4 },
+            py: 1.4,
+            borderRadius: "999px",
+            fontWeight: 600,
+            textTransform: "none",
+            fontSize: { xs: "0.95rem", md: "1rem" },
+            "&:hover": {
+              bgcolor: "#A38EFF",
+            },
+          }}
+        >
+          Get Started
+        </Button>
+      </Box>
+    </Box>
+  );
+};
+
+export default HeroSection;

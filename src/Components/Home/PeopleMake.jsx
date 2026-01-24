@@ -57,7 +57,7 @@ const PeopleMake = () => {
         end: "+=200%",
         scrub: true,
         pin: true,
-        markers: true,
+        markers: false,
       },
     });
 
