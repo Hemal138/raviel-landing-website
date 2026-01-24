@@ -53,11 +53,11 @@ const PeopleMake = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top top",
+        start: "top -10%",
         end: "+=200%",
         scrub: true,
         pin: true,
-        markers: false,
+        markers: true,
       },
     });
 
