@@ -166,33 +166,40 @@ const PeopleMake = () => {
             </Box>
 
             {/* FLOATING STAR */}
-            <Box
-              sx={{
-                position: "absolute",
-                top: {
-                  xs: "clamp(120px, 25vh, 220px)", // mobile/tablet smooth scaling
-                  sm: "clamp(150px, 20vh, 260px)", // tablet-friendly
-                  md: "170px", // desktop original unchanged
-                  lg:"100px"
-                },
+<Box
+  sx={{
+    position: "absolute",
 
-                right: {
-                  xs: "clamp(-60px, -8vw, -30px)", // mobile smooth
-                  sm: "clamp(20px, 10vw, 120px)", // tablet best placement
-                  md: "100px", // desktop original unchanged
-                  lg:"400px"
-                },
+    top: {
+      xs: "clamp(120px, 25vh, 220px)",
+      sm: "300px",
+      md: "170px",
+      lg: "100px",
+    },
 
-                width: { xs: "150px", sm: "150px", md: "auto" },
-              }}
-            >
-              <img
-                ref={starRef2}
-                src={home2star3}
-                style={{ width: "100%" }}
-                alt=""
-              />
-            </Box>
+    right: {
+      xs: "0px",
+      sm: "100px",
+      md: "170px",
+      lg: "200px",
+    },
+
+    width: { xs: "100px", sm: "150px", md: "auto" },
+
+    // 🔴 HIDE ABOVE 1500px
+    "@media (min-width:1500px)": {
+      display: "none",
+    },
+  }}
+>
+  <img
+    ref={starRef2}
+    src={home2star3}
+    style={{ width: "100%" }}
+    alt=""
+  />
+</Box>
+
           </Box>
         </Box>
       </Box>

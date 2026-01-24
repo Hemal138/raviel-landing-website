@@ -183,35 +183,35 @@ const WhatWe = () => {
                     {card.title}
                   </Box>
 
-<Box
-  sx={{
-    height: "70%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    transform: "rotate(-5deg)",
-  }}
->
-  <Box
-    component="img"
-    src={card.image}
-    alt={card.title}
-    sx={{
-      width: {
-        xs: "100%",   // 📱 mobile → small
-        sm: "75%",   // 📱 tablet
-        md: "85%",   // 💻 desktop
-      },
-      maxHeight: {
-        xs: "140px",
-        sm: "200px",
-        md: "280px",
-      },
-      objectFit: "contain",
-      filter: "drop-shadow(0px 8px 18px rgba(0,0,0,0.25))",
-    }}
-  />
-</Box>
+                  <Box
+                    sx={{
+                      height: "70%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      transform: "rotate(-5deg)",
+                    }}
+                  >
+                    <Box
+                      component="img"
+                      src={card.image}
+                      alt={card.title}
+                      sx={{
+                        width: {
+                          xs: "100%",   // 📱 mobile → small
+                          sm: "75%",   // 📱 tablet
+                          md: "85%",   // 💻 desktop
+                        },
+                        maxHeight: {
+                          xs: "140px",
+                          sm: "200px",
+                          md: "280px",
+                        },
+                        objectFit: "contain",
+                        filter: "drop-shadow(0px 8px 18px rgba(0,0,0,0.25))",
+                      }}
+                    />
+                  </Box>
 
                 </Box>
               </Grid>
