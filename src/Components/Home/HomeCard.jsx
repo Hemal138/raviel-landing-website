@@ -49,12 +49,12 @@ const HomeCard = () => {
     });
 
     // card 3 moving
-    tl.to(card1Ref.current, { y: -500, opacity: 0, duration: 1 });
-    tl.to(card2Ref.current, { y: -500, opacity: 0, duration: 1 });
-    tl.to(card3Ref.current, { y: -500, opacity: 0, duration: 1 });
-    tl.to(card4Ref.current, { y: -500, opacity: 0, duration: 1 });
-    tl.to(card5Ref.current, { y: -500, opacity: 0, duration: 1 });
-    // tl.to(card6Ref.current, { y: -500, opacity: 0, duration: 1 });
+    tl.to(card1Ref.current, { y: -500, opacity: 0, duration: 2 });
+    tl.to(card2Ref.current, { y: -500, opacity: 0, duration: 2 });
+    tl.to(card3Ref.current, { y: -500, opacity: 0, duration: 2 });
+    tl.to(card4Ref.current, { y: -500, opacity: 0, duration: 2 });
+    tl.to(card5Ref.current, { y: -500, opacity: 0, duration: 2 });
+    // tl.to(card6Ref.current, { y: -500, opacity: 0, duration: 2 });
   });
 
   return (
