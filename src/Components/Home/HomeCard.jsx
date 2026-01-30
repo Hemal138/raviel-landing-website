@@ -122,7 +122,7 @@ const HomeCard = () => {
           overflow: "hidden",
         }}
       >
-        <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
+        <Box sx={{ position: "relative", width: "100%", height: "100%",overflow:"hidden" }}>
           {/* CARD 1 */}
           <Box
             ref={card1Ref}

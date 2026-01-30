@@ -3,21 +3,62 @@
   <head>
     <meta charset="UTF-8" />
 
-    <!-- Viewport (VERY IMPORTANT) -->
+    <!-- ✅ Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Title -->
-    <title>Raviel</title>
+    <!-- ✅ SEO Title (Brand) -->
+    <title>Raviel – Digital Services & Solutions</title>
 
-    <!-- Favicon (Vite default or your custom icon) -->
-    <link rel="icon" type="image/svg+xml" href="/public/jpg.jpg" />
+    <!-- ✅ Primary Description -->
+    <meta
+      name="description"
+      content="Raviel provides modern digital services including listings, payments, learning resources and business solutions."
+    />
 
-    <!-- Optional: PNG favicon -->
-    <!-- <link rel="icon" type="image/png" href="/favicon.png" /> -->
+    <!-- ✅ Canonical (VERY IMPORTANT for sitelinks) -->
+    <link rel="canonical" href="https://raviel.in/" />
 
-    <!-- Optional: SEO basics -->
-    <meta name="description" content="Raviel – Premium web experience" />
+    <!-- ✅ Favicon -->
+    <link rel="icon" type="image/jpeg" href="/jpg.jpg" />
+
+    <!-- ✅ Theme color -->
     <meta name="theme-color" content="#000000" />
+
+    <!-- ✅ Open Graph (Social + Trust) -->
+    <meta property="og:title" content="Raviel – Digital Services Platform" />
+    <meta
+      property="og:description"
+      content="Explore Raviel services, learning resources, listings and secure payments."
+    />
+    <meta property="og:url" content="https://raviel.in/" />
+    <meta property="og:type" content="website" />
+
+    <!-- ✅ GOOGLE SITELINKS / BRAND SCHEMA -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Raviel",
+        "url": "https://raviel.in",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://raviel.in/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+
+    <!-- ✅ ORGANIZATION SCHEMA (BOOST TRUST) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Raviel",
+        "url": "https://raviel.in",
+        "logo": "https://raviel.in/jpg.jpg",
+        "sameAs": []
+      }
+    </script>
   </head>
 
   <body>

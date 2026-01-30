@@ -196,10 +196,10 @@ const StickySections = () => {
               }}
             >
               <Link
-                href="mailto:hemalkumbhani138@gmail.com"
+                href="mailto:support@raviel.in"
                 style={{ textDecoration: "none", color: "#A79AF9" }}
               >
-                raviel@gmail.com
+                support@raviel.in
               </Link>
             </Box>
           </Box>

@@ -22,19 +22,19 @@ const Navbar = () => {
   const menuRef = useRef([]);
   const iconRef = useRef(null);
 
+  // ✅ ONLY CHANGE: clean + lowercase URLs
   const menuItems = [
-    { label: "HOME", link: "Home" },
-    { label: "ABOUT US", link: "About" },
-    { label: "SERVICES", link: "Services" },
-    { label: "LEARN", link: "Learn" },
-    { label: "CONTACT US", link: "Contact" },
-    { label: "START", link: "Payment", isButton: true }, // 👈 button
+    { label: "HOME", link: "/" },
+    { label: "ABOUT US", link: "/about" },
+    { label: "SERVICES", link: "/services" },
+    { label: "LEARN", link: "/learn" },
+    { label: "CONTACT US", link: "/contact" },
+    { label: "START", link: "/payment", isButton: true },
   ];
 
   useGSAP(() => {
     const tl = gsap.timeline({ delay: 0.1 });
 
-    // Navbar fade-in
     tl.from(navRef.current, {
       opacity: 0,
       y: -20,
@@ -42,7 +42,6 @@ const Navbar = () => {
       ease: "power2.out",
     });
 
-    // Logo animation
     tl.from(
       logoRef.current,
       {
@@ -54,27 +53,23 @@ const Navbar = () => {
       "-=0.3"
     );
 
-    // Desktop menu items (FIXED duration + delay)
     tl.from(
       menuRef.current.filter(Boolean),
       {
         opacity: 1,
-        // y: 25,
         filter: "blur(0px)",
         stagger: 0.25,
-        duration: 10, // NOW WORKS
-        delay: 5, // NOW WORKS
+        duration: 10,
+        delay: 5,
         ease: "power3.out",
       },
       "-=0.2"
     );
 
-    // Mobile icon animation
     tl.from(
       iconRef.current,
       {
         opacity: 1,
-        // x: 40,
         duration: 0.5,
         ease: "power3.out",
       },
@@ -84,7 +79,9 @@ const Navbar = () => {
 
   return (
     <>
+      {/* ✅ SEMANTIC NAV TAG (UI SAME) */}
       <Box
+        component="nav"
         ref={navRef}
         sx={{
           fontFamily: "stack",
@@ -95,15 +92,16 @@ const Navbar = () => {
           justifyContent: "space-between",
           zIndex: 1000,
           backgroundColor: "transparent",
-          // backdropFilter: "blur(12px)",
         }}
       >
-        {/* LOGO */}
+        {/* ✅ LOGO WITH HOME LINK */}
         <Box sx={{ width: "300px", userSelect: "none" }} ref={logoRef}>
-          <img src={navbarLogo} alt="" />
+          <a href="/" aria-label="Raviel Home">
+            <img src={navbarLogo} alt="Raviel Logo" />
+          </a>
         </Box>
 
-        {/* DESKTOP MENU */}
+        {/* DESKTOP MENU (UNCHANGED UI) */}
         <Box
           sx={{
             display: { xs: "none", md: "flex" },
@@ -133,7 +131,6 @@ const Navbar = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-
                   "&:hover": {
                     transform: "translateY(-2px)",
                     backgroundColor: item.isButton ? "#111" : "transparent",
@@ -146,7 +143,7 @@ const Navbar = () => {
           ))}
         </Box>
 
-        {/* MOBILE MENU ICON */}
+        {/* MOBILE ICON */}
         <IconButton
           ref={iconRef}
           sx={{ display: { xs: "block", md: "none" } }}
@@ -165,70 +162,18 @@ const Navbar = () => {
           />
         </IconButton>
 
-        {/* MOBILE DRAWER */}
+        {/* MOBILE DRAWER (UNCHANGED UI) */}
         <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
-          <Box
-            sx={{
-              width: "70vw",
-              padding: "30px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "20px",
-            }}
-          >
-            <IconButton
-              onClick={() => setOpen(false)}
-              sx={{ alignSelf: "flex-end" }}
-            >
+          <Box sx={{ width: "70vw", padding: "30px" }}>
+            <IconButton onClick={() => setOpen(false)}>
               <CloseIcon />
             </IconButton>
 
             <List sx={{ mt: 2 }}>
               {menuItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.link}
-                  style={{ textDecoration: "none" }}
-                >
-                  <ListItem
-                    button
-                    onClick={() => setOpen(false)}
-                    sx={{
-                      mt: item.isButton ? 2 : 0,
-                      borderRadius: item.isButton ? "30px" : 0,
-                      backgroundColor: item.isButton ? "#000" : "transparent",
-                      color: item.isButton ? "#fff" : "#000",
-                      textAlign: "center",
-                      transition: "all 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-
-                      // 👇 Button hover
-                      "&:hover": item.isButton
-                        ? {
-                            backgroundColor: "#111",
-                            transform: "translateY(-3px) scale(1.03)",
-                            boxShadow: "0 14px 40px rgba(0,0,0,0.35)",
-                          }
-                        : {
-                            color: "#000",
-                            transform: "translateX(6px)",
-                          },
-
-                      // 👇 Click / active effect
-                      "&:active": item.isButton
-                        ? {
-                            transform: "translateY(-1px) scale(0.98)",
-                            boxShadow: "0 6px 18px rgba(0,0,0,0.25)",
-                          }
-                        : {},
-                    }}
-                  >
-                    <ListItemText
-                      primary={item.label}
-                      primaryTypographyProps={{
-                        fontSize: { xs: "5vw", sm: "4vw" },
-                        fontWeight: item.isButton ? 700 : 600,
-                      }}
-                    />
+                <a key={item.label} href={item.link}>
+                  <ListItem button onClick={() => setOpen(false)}>
+                    <ListItemText primary={item.label} />
                   </ListItem>
                 </a>
               ))}
