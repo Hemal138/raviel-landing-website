@@ -5,46 +5,61 @@ import {
   Button,
   Stack,
   Paper,
+  CircularProgress,
 } from "@mui/material";
-import { fetchSubscriptionPlans } from "../Api/subscriptionApi";
-
-const DURATIONS = [
-  { label: "1 Month", value: "monthly" },
-  { label: "3 Months", value: "quarterly" },
-  { label: "6 Months", value: "half-yearly" },
-  { label: "1 Year", value: "yearly" },
-];
+import subscriptionAxios from "../Api/subscriptionAxios";
 
 const PartnerPricing = () => {
   const [plans, setPlans] = useState([]);
   const [selectedPlan, setSelectedPlan] = useState(null);
-  const [duration, setDuration] = useState("monthly");
   const [loading, setLoading] = useState(true);
+  const PARTNER_APP_URL = import.meta.env.VITE_PARTNER_APP_URL;
+
+
+  /* ================= FETCH SUBSCRIPTION PLANS ================= */
+  const fetchPlans = async () => {
+    try {
+      setLoading(true);
+
+      const res = await subscriptionAxios.get(
+        "/subscriptions/fetch-plans",
+        {
+          params: {
+            userType: "partner",
+            planType: "monthly",
+          },
+        }
+      );
+
+      const partnerPlans = res?.data?.payload?.partner || [];
+      // console.log("Fetched partner plans:", partnerPlans);
+
+      setPlans(partnerPlans);
+      setSelectedPlan(partnerPlans[0] || null);
+    } catch (error) {
+      console.error("Failed to fetch subscription plans", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const loadPlans = async () => {
-      setLoading(true);
-      const data = await fetchSubscriptionPlans({
-        userType: "partner",
-        planType: duration,
-      });
-      setPlans(data || []);
-      setSelectedPlan(data?.[0] || null);
-      setLoading(false);
-    };
+    fetchPlans();
+  }, []);
 
-    loadPlans();
-  }, [duration]);
+  /* ================= LOADING ================= */
+  if (loading) {
+    return (
+      <Box py={10} textAlign="center">
+        <CircularProgress />
+      </Box>
+    );
+  }
 
   return (
-    <Box sx={{ bgcolor: "#F2ECE4", py: 6 }}>
-      <Typography
-        fontSize={48}
-        fontWeight={900}
-        textAlign="center"
-        mb={5}
-      >
-        Partner&apos;s <i style={{fontFamily:"beardeys"}}>PRICING</i>
+    <Box sx={{ bgcolor: "#d9d2ff", py: 6 }}>
+      <Typography fontSize={48} fontWeight={900} textAlign="center" mb={5}>
+        Partner&apos;s <i style={{ fontFamily: "beardeys" }}>PRICING</i>
       </Typography>
 
       <Paper
@@ -86,17 +101,18 @@ const PartnerPricing = () => {
                 justifyContent="space-between"
                 alignItems="center"
               >
-                {/* LEFT : NAME & DESC */}
                 <Box>
                   <Typography fontSize={20} fontWeight={700}>
                     {plan.planName}
                   </Typography>
+
+
+
                   <Typography fontSize={14} color="text.secondary">
                     {plan.planDescription}
                   </Typography>
                 </Box>
 
-                {/* RIGHT : PRICE + DURATION */}
                 <Box textAlign="right">
                   <Typography fontSize={18} fontWeight={800}>
                     ₹{plan.price}
@@ -106,53 +122,44 @@ const PartnerPricing = () => {
                     color="text.secondary"
                     fontWeight={600}
                   >
-                    {plan.planType} {/* or plan.duration */}
+                    {plan.planType}
                   </Typography>
                 </Box>
               </Stack>
-
             </Box>
           ))}
         </Stack>
 
-        {/* ================= RIGHT : DETAILS ================= */}
-        <Box
-          sx={{
-            bgcolor: "#FFB4A8",
-            borderRadius: 5,
-            p: 4,
-          }}
-        >
-
-          {/* Selected Plan Detail */}
+        {/* ================= RIGHT : PLAN DETAILS ================= */}
+        <Box sx={{ bgcolor: "#FFB4A8", borderRadius: 5, p: 4 }}>
           {selectedPlan && (
-            <Box
-              sx={{
-                bgcolor: "#fff",
-                borderRadius: 4,
-                p: 4,
-              }}
-            >
+            <Box sx={{ bgcolor: "#fff", borderRadius: 4, p: 4 }}>
               <Typography fontSize={32} fontWeight={900}>
                 ₹{selectedPlan.price}
                 <Typography component="span" fontSize={16}>
-                  {" "}
                   | {selectedPlan.planType}
                 </Typography>
               </Typography>
-
+              <Typography fontSize={14} color="text.secondary">
+                {selectedPlan.planDescription}
+              </Typography>
               <Stack spacing={1.2} mt={3}>
-                {selectedPlan.subscriptionPlanKeyFeatures?.map(
-                  (f) => (
-                    <Typography key={f.id} fontSize={15}>
-                      ✔ {f.featureName}
-                    </Typography>
-                  )
-                )}
+                <Stack spacing={1.2} mt={3}>
+                  {Array.isArray(selectedPlan.subscriptionPlanKeyFeatures) &&
+                    selectedPlan.subscriptionPlanKeyFeatures
+                      .sort((a, b) => a.displayOrder - b.displayOrder)
+                      .map((feature) => (
+                        <Typography key={feature.id} fontSize={15}>
+                          ✔ {feature.featureName}
+                        </Typography>
+                      ))}
+                </Stack>
+
               </Stack>
 
               <Button
                 fullWidth
+                 onClick={() => window.open(PARTNER_APP_URL, "_blank")}
                 sx={{
                   mt: 4,
                   py: 1.4,
@@ -160,9 +167,7 @@ const PartnerPricing = () => {
                   bgcolor: "#053C2E",
                   color: "#fff",
                   fontWeight: 700,
-                  "&:hover": {
-                    bgcolor: "#032B21",
-                  },
+                  "&:hover": { bgcolor: "#032B21" },
                 }}
               >
                 Apply Now

@@ -15,7 +15,6 @@ import Contact from "./pages/Contact";
 import Learn from "./pages/Learn";
 import Listing from "./pages/Listing";
 import Payment from "./pages/Payment";
-import SingIn from "./Components/Form/SingIn";
 
 const App = () => {
   return (

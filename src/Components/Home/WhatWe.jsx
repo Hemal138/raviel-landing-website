@@ -3,10 +3,10 @@ import React from "react";
 
 // images
 import home3lineimg from "../../assets/images/home/Line 2.png";
-import home3men from "../../assets/images/home/home3men.png";
-import home3card from "../../assets/images/home/home3card.png";
-import home3mobile from "../../assets/images/home/home3mobile.png";
-import home3menwalk from "../../assets/images/home/home3menwalk.png";
+import home3men from "../../assets/images/home/QuickShare_2601311420/whatwe1.png";
+import home3card from "../../assets/images/home/QuickShare_2601311420/whatwe2.png";
+import home3mobile from "../../assets/images/home/QuickShare_2601311420/whatwe3.png";
+import home3menwalk from "../../assets/images/home/QuickShare_2601311420/whatwe4.png";
 import clockHome from "../../assets/TODOLIST/CLOCK/1.mp4";
 
 // ================= CARD DATA =================

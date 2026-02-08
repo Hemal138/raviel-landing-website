@@ -23,9 +23,9 @@ const Payment = () => {
 
       <SellerGrowthIntelligence />
       <WeOffer />
-      <MembershipPricing />
-      {showIconPayment && <IconPayment />}
+      {/* <MembershipPricing /> */}
       <PartnerPayment/>
+      {showIconPayment && <IconPayment />}
     </>
   );
 };

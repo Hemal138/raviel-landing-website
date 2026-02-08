@@ -9,13 +9,14 @@ import { useNavigate } from "react-router-dom";
 
 const StickySections = () => {
   const navigate = useNavigate();
+
   return (
     <>
-      {/* Trusted Sticky Section */}
+      {/* ================= TRUSTED SECTION ================= */}
       <Box
         sx={{
           width: "100%",
-          height: { xs: "80vh", md: "100vh" },
+          minHeight: "100vh",
           background: "#EFE9E2",
           position: "sticky",
           top: 0,
@@ -23,17 +24,16 @@ const StickySections = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          px: { xs: 2, md: 4 },
+          px: { xs: 2, sm: 3, md: 6 },
+          overflow: "hidden",
         }}
       >
-        <Box sx={{ textAlign: "center" }}>
+        <Box sx={{ textAlign: "center", maxWidth: "900px" }}>
           <Typography
             sx={{
               fontFamily: "beardeys",
-              fontSize: { xs: "8vw", sm: "6vw", md: "4vw" },
-              width: { xs: "100%", md: "60%" },
-              margin: "0 auto",
-              paddingBottom: "20px",
+              fontSize: { xs: "34px", sm: "42px", md: "60px" },
+              mb: 2,
             }}
           >
             We’re trusted by professionals
@@ -41,11 +41,11 @@ const StickySections = () => {
 
           <Typography
             sx={{
-              fontSize: { xs: "4vw", sm: "2.2vw", md: "1.3vw" },
-              width: { xs: "95%", md: "55%" },
-              margin: "0 auto",
-              paddingBottom: "30px",
-              lineHeight: 1.4,
+              fontSize: { xs: "14px", sm: "16px", md: "18px" },
+              lineHeight: 1.6,
+              mb: 4,
+              maxWidth: "600px",
+              mx: "auto",
             }}
           >
             Learn why professionals trust our solutions to complete their
@@ -57,17 +57,16 @@ const StickySections = () => {
             sx={{
               backgroundColor: "#A699F9",
               color: "#000",
-              padding: { xs: "10px 20px", md: "12px 30px" },
+              px: { xs: 3, md: 4 },
+              py: 1.5,
               borderRadius: "14px",
               fontSize: { xs: "14px", md: "18px" },
               fontWeight: 600,
               textTransform: "none",
               boxShadow: "0 4px 12px rgba(166,153,249,0.4)",
-              transition: "0.3s",
               "&:hover": {
                 backgroundColor: "#8f7ff0",
-                boxShadow: "0 6px 18px rgba(166,153,249,0.6)",
-                transform: "translateY(-3px)",
+                transform: "translateY(-2px)",
                 color: "#fff",
               },
             }}
@@ -77,82 +76,60 @@ const StickySections = () => {
         </Box>
       </Box>
 
-      {/* Contact Section */}
+      {/* ================= CONTACT SECTION ================= */}
       <Box
         sx={{
           width: "100%",
-          height: { xs: "100vh", md: "100vh" },
+          minHeight: "100vh",
           background: "#000",
-          borderRadius: { xs: "20px", md: "50px" },
+          borderRadius: { xs: "16px", md: "40px" },
           position: "relative",
           zIndex: 2,
           display: "flex",
-          justifyContent: "center",
           alignItems: "center",
-          px: 2,
+          justifyContent: "center",
+          px: { xs: 2, sm: 3, md: 6 },
+          overflow: "hidden",
           fontFamily: "beardeys",
-          color: "white",
+          color: "#fff",
         }}
       >
-        <Box sx={{ textAlign: "center" }}>
+        <Box sx={{ textAlign: "center", maxWidth: "1000px", width: "100%" }}>
           {/* READY */}
           <Box
             sx={{
-              fontSize: { xs: "50px", sm: "6vw", md: "4.5vw", lg: "8vw" },
-              transform: "rotate(-10deg)",
+              fontSize: { xs: "36px", sm: "50px", md: "90px" },
+              transform: { xs: "none", md: "rotate(-10deg)" },
               display: "flex",
-              alignItems: "center",
               justifyContent: "center",
-              gap: { xs: 1, sm: 2, md: 3 },
+              alignItems: "center",
+              gap: 2,
+              flexWrap: "wrap",
             }}
           >
-            <Box
-              sx={{
-                width: { xs: "50px", sm: "70px", md: "100px" },
-                transform: "rotate(-55deg)",
-              }}
-            >
-              <img
-                src={boxsectionhome1}
-                alt=""
-                style={{ width: "100%", height: "auto" }}
-              />
+            <Box sx={{ width: { xs: "40px", md: "80px" } }}>
+              <img src={boxsectionhome1} alt="" style={{ width: "100%" }} />
             </Box>
             Ready
-            <Box
-              sx={{
-                width: { xs: "60px", sm: "130px", md: "180px", lg: "200px" },
-                transform: "rotate(10deg)",
-              }}
-            >
-              <img
-                src={boxsectionhome4}
-                alt=""
-                style={{ width: "100%", height: "auto" }}
-              />
+            <Box sx={{ width: { xs: "50px", md: "140px" } }}>
+              <img src={boxsectionhome4} alt="" style={{ width: "100%" }} />
             </Box>
           </Box>
 
           {/* TO */}
           <Box
             sx={{
-              fontSize: { xs: "50px", sm: "6vw", md: "4.5vw", lg: "8vw" },
+              fontSize: { xs: "36px", sm: "50px", md: "90px" },
               display: "flex",
-              alignItems: "center",
               justifyContent: "center",
-              gap: { xs: 1, sm: 2, md: 3 },
+              alignItems: "center",
+              gap: 2,
+              flexWrap: "wrap",
+              my: 1,
             }}
           >
-            <Box
-              sx={{
-                width: { xs: "100px", sm: "180px", md: "230px", lg: "300px" },
-              }}
-            >
-              <img
-                src={boxsectionhome5}
-                alt=""
-                style={{ width: "100%", height: "auto" }}
-              />
+            <Box sx={{ width: { xs: "70px", md: "200px" } }}>
+              <img src={boxsectionhome5} alt="" style={{ width: "100%" }} />
             </Box>
             To
           </Box>
@@ -160,48 +137,44 @@ const StickySections = () => {
           {/* CONTACT */}
           <Box
             sx={{
-              fontSize: { xs: "50px", sm: "6vw", md: "4.5vw", lg: "8vw" },
-              transform: "rotate(5deg)",
+              fontSize: { xs: "36px", sm: "50px", md: "90px" },
+              transform: { xs: "none", md: "rotate(5deg)" },
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 2,
+              flexWrap: "wrap",
             }}
           >
             Contact?
-            <Box
-              sx={{
-                width: { xs: "70px", sm: "100px", md: "130px", lg: "150px" },
-              }}
-            >
-              <img
-                src={boxsectionhome3}
-                alt=""
-                style={{ width: "100%", height: "auto" }}
-              />
+            <Box sx={{ width: { xs: "50px", md: "120px" } }}>
+              <img src={boxsectionhome3} alt="" style={{ width: "100%" }} />
             </Box>
           </Box>
+
+          {/* EMAIL */}
           <Box
             sx={{
-              position: "absolute",
-              bottom: { xs: "10%", sm: "5%", md: "5%", lg: "5%" },
-              left: "60%",
+              mt: 6,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 2,
             }}
           >
-            <Box sx={{ width: "100px", textAlign: "end" }}>
-              <img src={boxsectionhome2} alt="" />
+            <Box sx={{ width: "80px" }}>
+              <img src={boxsectionhome2} alt="" style={{ width: "100%" }} />
             </Box>
-            <Box
-              sx={{
-                marginTop: "20px",
-                fontSize: { xs: "5vw", sm: "4vw", md: "2.5vw", lg: "2vw" },
-                position: "relative",
-                left: { xs: "-20%" },
-              }}
-            >
+
+            <Typography sx={{ fontSize: { xs: "14px", md: "20px" } }}>
               <Link
                 href="mailto:support@raviel.in"
-                style={{ textDecoration: "none", color: "#A79AF9" }}
+                underline="none"
+                sx={{ color: "#A79AF9" }}
               >
                 support@raviel.in
               </Link>
-            </Box>
+            </Typography>
           </Box>
         </Box>
       </Box>

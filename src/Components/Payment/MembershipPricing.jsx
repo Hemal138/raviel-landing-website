@@ -8,7 +8,7 @@ import {
   Divider,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { fetchSubscriptionPlans } from "../Api/subscriptionApi";
+// import { fetchSubscriptionPlans } from "../Api/subscriptionApi";
 
 /* ===========================
    DURATION CONFIG
