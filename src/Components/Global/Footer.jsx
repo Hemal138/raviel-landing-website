@@ -115,11 +115,10 @@ const Footer = () => {
 
             {[
               "About Us",
-              "Join as a Seller.",
-              "Our Mission & Vision.",
-              "Terms of Service.",
-              "Payment Policy.",
+              "Terms of Service. page",
+              "Payment Policy. page",
               "Contact Us.",
+              "Support Center.",
             ].map((item) => (
               <Typography
                 key={item}
@@ -160,11 +159,11 @@ const Footer = () => {
             </Typography>
 
             {[
-              "Getting Started Guide.",
-              "Seller Success Stories",
+              "Users Guide. page",
+              "Seller Success Stories page",
               "Pricing & Packages",
               "Video Tutorials",
-              "FAQs",
+              "FAQs page",
             ].map((item) => (
               <Typography
                 key={item}
@@ -314,7 +313,7 @@ const Footer = () => {
               textAlign: { xs: "center", md: "left" },
             }}
           >
-            © 2025 JioMart Sellers Platform
+            © 2026 Raviel. All Rights Reserved.
           </Typography>
         </Box>
       </Box>
